@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getSession } from '../../../../lib/auth';
 import { getDb } from '../../../../lib/db';
 import { revalidatePath } from 'next/cache';
-import { writeFile } from 'fs/promises';
+import { put } from '@vercel/blob';
 import path from 'path';
 
 export async function POST(request) {
@@ -29,14 +29,11 @@ export async function POST(request) {
 
         const handleUpload = async (uploadFile, folderPrefix) => {
             if (uploadFile && uploadFile.size > 0) {
-                const bytes = await uploadFile.arrayBuffer();
-                const buffer = Buffer.from(bytes);
-                const ext = path.extname(uploadFile.name);
-                const filename = `${folderPrefix}_${Date.now()}${ext}`;
-                const uploadDir = path.join(process.cwd(), 'public/uploads/categories');
-                const filepath = path.join(uploadDir, filename);
-                await writeFile(filepath, buffer);
-                return `/uploads/categories/${filename}`;
+                const filename = `categories/${folderPrefix}_${Date.now()}${path.extname(uploadFile.name)}`;
+                const blob = await put(filename, uploadFile, {
+                    access: 'public',
+                });
+                return blob.url;
             }
             return null;
         };

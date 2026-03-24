@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getSession } from '../../../../../../lib/auth';
 import { getDb } from '../../../../../../lib/db';
 import { revalidatePath } from 'next/cache';
-import { writeFile, unlink } from 'fs/promises';
+import { put } from '@vercel/blob';
 import path from 'path';
 
 // Get a single restaurant for editing
@@ -46,27 +46,16 @@ export async function PUT(request, { params }) {
 
         let imageUrl = existing.image_url;
 
-        // Upload New Image if provided
+        // Upload New Image with Vercel Blob
         if (file && file.size > 0 && typeof file.name === 'string') {
-            const bytes = await file.arrayBuffer();
-            const buffer = Buffer.from(bytes);
-            const ext = path.extname(file.name);
-            const filename = `resto_${slug}_${Date.now()}${ext}`;
-            const uploadDir = path.join(process.cwd(), 'public/uploads/restaurants');
-
-            // Ensure folder exists (simplification: assume it does or created manually, or let fs handle if it fails we log)
             try {
-                const filepath = path.join(uploadDir, filename);
-                await writeFile(filepath, buffer);
-                imageUrl = `/uploads/restaurants/${filename}`;
-
-                // Optional: Delete old image to save space
-                if (existing.image_url && !existing.image_url.startsWith('http')) {
-                    const oldPath = path.join(process.cwd(), 'public', existing.image_url);
-                    await unlink(oldPath).catch(() => { });
-                }
-            } catch (fsErr) {
-                console.error("Error saving file", fsErr);
+                const filename = `restaurants/resto_${slug}_${Date.now()}${path.extname(file.name)}`;
+                const blob = await put(filename, file, {
+                    access: 'public',
+                });
+                imageUrl = blob.url;
+            } catch (blobErr) {
+                console.error("Error uploading to Vercel Blob", blobErr);
             }
         }
 
