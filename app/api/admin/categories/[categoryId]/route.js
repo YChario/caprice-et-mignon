@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../../lib/auth';
 import { getDb } from '../../../../../lib/db';
+import { revalidatePath } from 'next/cache';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
@@ -83,6 +84,9 @@ export async function PUT(request, { params }) {
                 }
             }
         );
+
+        // Revalidate to reflect changes
+        revalidatePath('/', 'layout');
 
         return NextResponse.json({ success: true, message: 'Catégorie mise à jour' });
 

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../lib/auth';
 import { getDb } from '../../../../lib/db';
+import { revalidatePath } from 'next/cache';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
@@ -64,6 +65,9 @@ export async function POST(request) {
             is_active: 1,
             created_at: new Date()
         });
+
+        // Revalidate to reflect new category
+        revalidatePath('/', 'layout');
 
         return NextResponse.json({ success: true, message: 'Catégorie ajoutée' });
 

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../../../lib/auth';
 import { getDb } from '../../../../../../lib/db';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(request, { params }) {
     try {
@@ -24,6 +25,10 @@ export async function POST(request, { params }) {
             // Super admin can delete any
             await db.collection('categories').deleteOne({ id: parseInt(categoryId) });
         }
+
+        // Revalidate all pages to be safe since it's hard to get the exact slug here 
+        // without another DB query, but usually /admin would be the referer.
+        revalidatePath('/', 'layout');
 
         // Redirect back to the dashboard. The URL is tricky to know exactly here, so we return a redirect header
         // Alternatively, since it's a form post, we can redirect to the referer

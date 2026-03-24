@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../../../../lib/auth';
 import { getDb } from '../../../../../../../lib/db';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(request, { params }) {
     try {
@@ -17,6 +18,9 @@ export async function POST(request, { params }) {
 
         // Then delete the restaurant
         await db.collection('restaurants').deleteOne({ id: parseInt(id) });
+
+        // Revalidate the home page to remove the restaurant from the list
+        revalidatePath('/');
 
         const referer = request.headers.get('referer');
         return NextResponse.redirect(referer || new URL('/admin/super', request.url), 303);

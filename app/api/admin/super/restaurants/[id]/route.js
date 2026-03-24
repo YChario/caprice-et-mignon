@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../../../lib/auth';
 import { getDb } from '../../../../../../lib/db';
+import { revalidatePath } from 'next/cache';
 import { writeFile, unlink } from 'fs/promises';
 import path from 'path';
 
@@ -81,6 +82,9 @@ export async function PUT(request, { params }) {
                 }
             }
         );
+        
+        // Revalidate the home page to reflect changes (name, slug, image, active status)
+        revalidatePath('/');
 
         return NextResponse.json({ success: true, message: 'Restaurant mis à jour' });
 
