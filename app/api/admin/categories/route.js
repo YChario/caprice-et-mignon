@@ -1,3 +1,4 @@
+// Force rebuild for Vercel Blob integration - 2026-03-24
 import { NextResponse } from 'next/server';
 import { getSession } from '../../../../lib/auth';
 import { getDb } from '../../../../lib/db';
