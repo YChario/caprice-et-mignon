@@ -1,0 +1,345 @@
+.restaurant-container {
+    min-height: 100vh;
+    padding: 0 0 5rem 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Base gradients dynamically applying to the wrapper */
+.theme-caprice.restaurant-container {
+    background: url('/caprice_bg.jpg') repeat;
+    background-size: 300px; /* Adjusted for luxury pattern look */
+}
+
+
+
+.theme-mignon.restaurant-container {
+    background: transparent;
+}
+
+/* Premium Header */
+.resto-header {
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(28, 17, 16, 0.8) 0%, transparent 100%);
+}
+
+.back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(-5px);
+}
+
+.resto-header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+}
+
+.resto-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.theme-caprice .resto-header h1 {
+    background: var(--caprice-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.theme-mignon .resto-header h1 {
+    background: var(--mignon-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 3rem 4rem;
+    max-width: 1400px;
+    margin: 2rem auto;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+    /* Fond "gourmand" style pistache et framboise avec effet verre premium */
+    background: linear-gradient(135deg, rgba(255, 118, 117, 0.15) 0%, rgba(85, 239, 196, 0.15) 100%);
+    border-radius: 32px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 2px 20px rgba(255, 255, 255, 0.05);
+}
+
+.category-card {
+    background-color: var(--glass-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+}
+
+.cat-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.cat-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 10, 10, 0.4);
+    /* Dark overlay over entire image */
+    transition: background 0.4s ease;
+    z-index: 1;
+}
+
+.cat-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.category-card:hover .cat-image {
+    transform: scale(1.08);
+}
+
+.cat-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a1b1a 0%, #1f1211 100%);
+    transition: transform 0.6s ease;
+}
+
+.category-card:hover .cat-image-placeholder {
+    transform: scale(1.05);
+}
+
+.cat-initial {
+    font-size: 6rem;
+    font-weight: 900;
+    opacity: 0.05;
+    color: #fff;
+}
+
+.cat-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+}
+
+.cat-info-text {
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    /* Optional, for diamond effect we'd need SVGs or complex clip-paths, box is elegant too */
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cat-info h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s;
+}
+
+.resto-name-overlay {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.view-btn {
+    display: none;
+    /* Hide the "Voir ->" button to focus on the logo look */
+}
+
+/* Hover States per theme */
+.category-card:hover .cat-image-wrapper::after {
+    background: rgba(20, 10, 10, 0.6);
+    /* Darkens slightly on hover to make text pop more */
+}
+
+.category-card:hover {
+    transform: translateY(-12px);
+}
+
+.theme-caprice .category-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--caprice-glow);
+    border-color: rgba(255, 71, 87, 0.3);
+}
+
+.theme-caprice .category-card:hover .cat-info h3 {
+    color: var(--caprice-accent);
+}
+
+.theme-caprice .category-card:hover .view-btn {
+    color: #fff;
+    background: var(--caprice-gradient);
+    border-color: transparent;
+    box-shadow: 0 4px 15px var(--caprice-glow);
+    transform: translateX(5px);
+}
+
+.theme-mignon .category-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--mignon-glow);
+    border-color: rgba(255, 127, 80, 0.3);
+}
+
+.theme-mignon .category-card:hover .cat-info h3 {
+    color: var(--mignon-accent);
+}
+
+.theme-mignon .category-card:hover .view-btn {
+    color: #fff;
+    background: var(--mignon-gradient);
+    border-color: transparent;
+    box-shadow: 0 4px 15px var(--mignon-glow);
+    transform: translateX(5px);
+}
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .resto-header {
+        padding: 4rem 1.5rem 2rem;
+    }
+
+    .resto-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .resto-header p {
+        font-size: 0.95rem;
+    }
+
+    .categories-grid {
+        padding: 1rem;
+        gap: 1.2rem;
+        border-radius: 20px;
+    }
+
+    .category-card {
+        height: 200px;
+    }
+
+    .cat-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .cat-info-text {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .resto-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2x2 layout */
+        padding: 1rem 0.5rem;
+        gap: 0.8rem;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    .category-card {
+        height: 160px;
+        border-radius: 12px;
+    }
+
+    .cat-info h3 {
+        font-size: 1.1rem; /* Smaller font to fit 2 columns */
+        letter-spacing: 0.02em;
+    }
+
+    .cat-info-text {
+        padding: 0.5rem;
+        border-width: 1.5px;
+    }
+
+    .resto-name-overlay {
+        font-size: 0.65rem;
+    }
+}
+
+

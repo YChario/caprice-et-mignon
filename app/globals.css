@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
+
+:root {
+  /* Fresh, appetizing light base colors */
+  --bg-primary: #fcf8f5;
+  /* Light creamy background */
+  --bg-secondary: #ffffff;
+  --text-primary: #2d3436;
+  /* Dark gray for readability */
+  --text-secondary: #636e72;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.5);
+
+  --caprice-accent: #ff4b72;
+  /* Vibrant appetizing strawberry pink */
+  --caprice-glow: rgba(255, 75, 114, 0.4);
+  --caprice-gradient: linear-gradient(135deg, #ff7e9e, #ff4b72, #ff3366);
+
+  --mignon-accent: #10ac84;
+  /* Fresh mint/basil green */
+  --mignon-glow: rgba(16, 172, 132, 0.4);
+  --mignon-gradient: linear-gradient(135deg, #55efc4, #10ac84, #00b894);
+
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Dégradé fortement rose avec une touche beaucoup plus fine de vert */
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 35%, #98ff98 50%, #ff69b4 65%, #ffb6c1 100%); 
+    color: #1b5e20; /* vert foncé pour le texte */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Conteneur principal */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+/* Titres */
+h1, h2 {
+    color: #2e7d32; /* vert */
+}
+
+/* Boutons */
+button {
+    background-color: #4caf50; /* vert */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2e7d32; /* vert plus foncé */
+}
+
+/* Liens */
+a {
+    color: #388e3c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a2220;
+}
