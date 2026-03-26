@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose';
 const secretKey = 'super-secret-key-pour-caprice-et-mignon';
 const key = new TextEncoder().encode(secretKey);
 
-export async function middleware(request) {
+export async function proxy(request) {
     const path = request.nextUrl.pathname;
 
     // Si on essaie d'accéder à l'admin (sauf login)

@@ -12,7 +12,7 @@ export default async function RestoAdminDashboard({ params }) {
     if (!session) redirect('/admin/login');
 
     const db = await getDb();
-    // Au niveau du middleware, la sécurité est déjà assurée (un resto_admin ne peut pas voir un autre resto)
+    // Au niveau du proxy, la sécurité est déjà assurée (un resto_admin ne peut pas voir un autre resto)
     // On récupère le restaurant
     const restaurant = await db.collection('restaurants').findOne({ id: parseInt(restoId) });
 
