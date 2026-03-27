@@ -50,7 +50,11 @@ export async function PUT(request, { params }) {
         if (file && file.size > 0 && typeof file.name === 'string') {
             try {
                 const filename = `restaurants/resto_${slug}_${Date.now()}${path.extname(file.name)}`;
-                const blob = await put(filename, file, {
+                
+                const bytes = await file.arrayBuffer();
+                const buffer = Buffer.from(bytes);
+
+                const blob = await put(filename, buffer, {
                     access: 'public',
                 });
                 imageUrl = blob.url;

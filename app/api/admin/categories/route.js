@@ -31,7 +31,12 @@ export async function POST(request) {
         const handleUpload = async (uploadFile, folderPrefix) => {
             if (uploadFile && uploadFile.size > 0) {
                 const filename = `categories/${folderPrefix}_${Date.now()}${path.extname(uploadFile.name)}`;
-                const blob = await put(filename, uploadFile, {
+                
+                // Convertir en Buffer pour éviter les problèmes de système de fichiers sur Vercel
+                const bytes = await uploadFile.arrayBuffer();
+                const buffer = Buffer.from(bytes);
+
+                const blob = await put(filename, buffer, {
                     access: 'public',
                 });
                 return blob.url;

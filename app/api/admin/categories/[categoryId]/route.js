@@ -53,7 +53,11 @@ export async function PUT(request, { params }) {
         const handleUpload = async (uploadFile, folderPrefix) => {
             if (uploadFile && uploadFile.size > 0 && typeof uploadFile.name === 'string') {
                 const filename = `categories/${folderPrefix}_${Date.now()}${path.extname(uploadFile.name)}`;
-                const blob = await put(filename, uploadFile, {
+                
+                const bytes = await uploadFile.arrayBuffer();
+                const buffer = Buffer.from(bytes);
+
+                const blob = await put(filename, buffer, {
                     access: 'public',
                 });
                 return blob.url;
