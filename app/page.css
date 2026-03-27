@@ -189,6 +189,11 @@
         padding: 2rem;
     }
 
+    .resto-card::before {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
     .card-content {
         transform: translateY(0);
     }
