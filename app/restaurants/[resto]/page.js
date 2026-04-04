@@ -53,7 +53,7 @@ export default async function RestaurantPage({ params }) {
                     <Link
                         href={`/restaurants/${restaurant.slug}/categories/${cat.slug}`}
                         key={cat.id || cat._id.toString()}
-                        className={`category-card ${cat.name === 'Crêpes & Croffles' ? 'full-width' : ''}`}
+                        className="category-card"
                     >
                         <div className="cat-image-wrapper">
                             {cat.image_url ? (
