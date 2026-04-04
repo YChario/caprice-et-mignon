@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-    title: 'Caprice et Mignon',
+    title: 'Caprice',
     description: 'Découvrez nos menus',
 }
 
