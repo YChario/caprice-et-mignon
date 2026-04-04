@@ -9,8 +9,26 @@
 
 /* Base gradients dynamically applying to the wrapper */
 .theme-caprice.restaurant-container {
-    background: url('/caprice_bg.jpg') repeat;
-    background-size: 300px; /* Adjusted for luxury pattern look */
+    background: linear-gradient(135deg, #fffafa 0%, #fff0f5 50%, #ffe4e1 100%); /* Rose pur, simple et raffiné */
+}
+
+.theme-caprice .resto-header {
+    background: transparent;
+}
+
+.theme-caprice .back-btn {
+    color: #d87093;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(216, 112, 147, 0.3);
+}
+
+.theme-caprice .back-btn:hover {
+    color: #fff;
+    background: #ffb6c1;
+}
+
+.theme-caprice .resto-header p {
+    color: #b05a76;
 }
 
 
@@ -95,6 +113,12 @@
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 2px 20px rgba(255, 255, 255, 0.05);
+}
+
+.theme-caprice .categories-grid {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 15px 35px rgba(216, 112, 147, 0.15), inset 0 2px 20px rgba(255, 255, 255, 0.8);
 }
 
 .category-card {
@@ -232,19 +256,33 @@
 }
 
 .theme-caprice .category-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px var(--caprice-glow);
-    border-color: rgba(255, 71, 87, 0.3);
+    box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4), 0 0 20px rgba(255, 105, 180, 0.2);
+    border-color: rgba(255, 182, 193, 0.6);
+}
+
+.theme-caprice .cat-info h3 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Ombre plus douce */
+}
+
+.theme-caprice .cat-info-text {
+    background: rgba(255, 255, 255, 0.15); /* Plus clair */
+    border-color: rgba(255, 255, 255, 0.95);
+}
+
+.theme-caprice .category-card:hover .cat-info-text {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .theme-caprice .category-card:hover .cat-info h3 {
-    color: var(--caprice-accent);
+    color: #ff4b72;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5); /* Glowing text */
 }
 
 .theme-caprice .category-card:hover .view-btn {
     color: #fff;
-    background: var(--caprice-gradient);
+    background: #ff8da1;
     border-color: transparent;
-    box-shadow: 0 4px 15px var(--caprice-glow);
+    box-shadow: 0 4px 15px rgba(255, 141, 161, 0.4);
     transform: translateX(5px);
 }
 
