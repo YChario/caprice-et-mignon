@@ -256,8 +256,8 @@
 }
 
 .theme-caprice .category-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 75, 114, 0.4); /* Halo rose d'ambiance */
+    border-color: rgba(255, 75, 114, 0.5); /* Bordure rosée au survol */
 }
 
 .theme-caprice .cat-info h3 {
@@ -271,19 +271,19 @@
 
 .theme-caprice .category-card:hover .cat-info-text {
     background: rgba(0, 0, 0, 0.7);
-    border-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 75, 114, 0.6); /* Cadre intérieur rosé délicat */
 }
 
 .theme-caprice .category-card:hover .cat-info h3 {
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4); 
+    color: #ffb6c1; /* Le texte devient rose clair très doux */
+    text-shadow: 0 0 15px rgba(255, 75, 114, 0.6); /* Glow textuel rose */
 }
 
 .theme-caprice .category-card:hover .view-btn {
-    color: #000;
-    background: #fff;
+    color: #fff;
+    background: #ff4b72;
     border-color: transparent;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 75, 114, 0.4);
     transform: translateX(5px);
 }
 
