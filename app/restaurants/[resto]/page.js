@@ -14,7 +14,29 @@ export default async function RestaurantPage({ params }) {
     }
 
     // Fetch Categories for this restaurant
-    const categories = await db.collection('categories').find({ restaurant_id: restaurant.id }).toArray();
+    const rawCategories = await db.collection('categories').find({ restaurant_id: restaurant.id }).toArray();
+
+    // Group Crepe and Croffles into a single visual card
+    const categories = [];
+    const mergedGroup = [];
+
+    rawCategories.forEach(cat => {
+        const nameLower = cat.name.toLowerCase();
+        if (nameLower.includes('crepe') || nameLower.includes('crêpe') || nameLower.includes('croffle')) {
+            mergedGroup.push(cat);
+        } else {
+            categories.push(cat);
+        }
+    });
+
+    if (mergedGroup.length > 0) {
+        // Create a combined category button using the primary's data for the link/image
+        const combined = {
+            ...mergedGroup[0], // Prefer the first one found (e.g. Crepes)
+            name: "Crêpes & Croffles"
+        };
+        categories.unshift(combined);
+    }
 
     const themeClass = restaurant.slug === 'caprice' ? 'theme-caprice' : 'theme-mignon';
 

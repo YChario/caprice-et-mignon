@@ -221,7 +221,7 @@
 }
 
 .cat-info h3 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     font-weight: 900;
     color: #ffffff;
     margin-bottom: 0.5rem;
@@ -338,7 +338,7 @@
     }
 
     .cat-info h3 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .cat-info-text {
@@ -367,7 +367,7 @@
     }
 
     .cat-info h3 {
-        font-size: 1.1rem; /* Smaller font to fit 2 columns */
+        font-size: 1.4rem; /* Smaller font to fit 2 columns */
         letter-spacing: 0.02em;
     }
 
