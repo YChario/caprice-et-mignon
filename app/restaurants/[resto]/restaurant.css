@@ -135,6 +135,11 @@
     backdrop-filter: blur(12px);
 }
 
+.category-card.full-width {
+    grid-column: 1 / -1;
+    height: 350px; /* Make it slightly taller since it spans full width */
+}
+
 .cat-image-wrapper {
     position: absolute;
     top: 0;
