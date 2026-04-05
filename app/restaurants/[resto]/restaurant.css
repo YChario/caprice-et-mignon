@@ -16,6 +16,25 @@
         radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.05) 0%, transparent 80%);
 }
 
+/* Effet Moderne: Halo lumineux animé en arrière-plan */
+.theme-caprice.restaurant-container::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at center, rgba(255, 75, 114, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: modern-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes modern-pulse {
+    0% { transform: scale(0.8) translate(5%, 5%); opacity: 0.4; }
+    100% { transform: scale(1.1) translate(-5%, -5%); opacity: 0.8; }
+}
+
 .theme-caprice .resto-header {
     background: transparent;
 }
