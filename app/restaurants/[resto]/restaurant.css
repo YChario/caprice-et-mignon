@@ -104,7 +104,59 @@
     color: var(--text-secondary);
     font-size: 1.2rem;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1rem auto 0;
+}
+
+/* Header social media centered */
+.header-socials-centered {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    z-index: 20;
+}
+
+.social-link-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.social-svg-mini {
+    width: 18px;
+    height: 18px;
+}
+
+.social-text-mini {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.social-link-mini:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-link-mini.tiktok:hover {
+    box-shadow: 0 10px 25px rgba(255, 0, 80, 0.2);
+    border-color: #ff0050;
+}
+
+.social-link-mini.instagram:hover {
+    box-shadow: 0 10px 25px rgba(220, 39, 67, 0.2);
+    border-color: #dc2743;
 }
 
 .theme-caprice .resto-header h1 {
