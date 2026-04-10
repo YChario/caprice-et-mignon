@@ -32,20 +32,20 @@
 
 html {
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden; /* Prevent html from scrolling */
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    /* Dégradé fortement rose avec une touche beaucoup plus fine de vert */
-    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 35%, #98ff98 50%, #ff69b4 65%, #ffb6c1 100%); 
-    color: #1b5e20; /* vert foncé pour le texte */
-    min-height: 100%;
+    font-family: 'Outfit', Arial, sans-serif;
+    background: #050002; /* Unified premium dark background */
+    color: #ffffff; /* Light text for dark theme */
+    height: 100%;
+    overflow-y: auto; /* Only body scrolls vertically */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
 }
 
 /* Conteneur principal */
