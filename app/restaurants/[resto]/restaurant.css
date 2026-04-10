@@ -4,9 +4,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    /* Fix overflow hidden preventing scroll to footer */
-    overflow-x: hidden;
-    overflow-y: visible;
+    /* Prevent internal scrollbars */
+    overflow: visible;
 }
 
 /* Base gradients dynamically applying to the wrapper */
