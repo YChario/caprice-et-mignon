@@ -74,7 +74,6 @@ export default async function RestaurantPage({ params }) {
                     </div>
                 )}
 
-                <p>{restaurant.description}</p>
             </header>
 
             <main className="categories-grid">
